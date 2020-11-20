@@ -14,9 +14,12 @@ const app = express()
 
 const port = 8080
 
-app.use(cors())
-app.use(express.static('dist'))
 app.use(bodyParser.text())
+app.use(cors())
+
+//app.use(express.static('dist'))
+app.use(express.static('../client/index.html'))
+
 
 URLBase = 'https://api.meaningcloud.com/sentiment-2.1?key='
 URLLang = '&lang=auto&url='
