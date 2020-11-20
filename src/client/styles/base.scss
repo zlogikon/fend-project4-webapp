@@ -1,11 +1,9 @@
-$font-color: blue;
+$font-color: rgb(16, 199, 32);
 
 
 
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    
 }
 
 main {
@@ -13,11 +11,17 @@ main {
 }
 
 section {
-    max-width: 800px;
-    margin: 50px auto;
+    
 }
 
 p {
-    font-size: 100px;
+    font-size: 25px;
     color: $font-color;
+}
+
+.container {
+    width: 50%;
+    margin: 25px auto;
+    display: grid;
+    grid-template-rows: 100px 100px 500px 200px;
 }
