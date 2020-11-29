@@ -1,6 +1,8 @@
 function handleSubmit(event) {
     event.preventDefault()
 
+    document.getElementById('results').innerHTML = ""
+
     // check what text was put into the form field
     let formText = document.getElementById('name').value
     const URLResult = document.getElementById('URLResult')
@@ -19,6 +21,7 @@ function handleSubmit(event) {
     console.log("::: Form Submitted :::")
 
     fetch('http://localhost:8081/test')
+
     .then(res => {
         return res.json()
     })
@@ -26,11 +29,7 @@ function handleSubmit(event) {
         document.getElementById('results').innerHTML = data.message
     })
     
-    //fetch('http://localhost:8081/test')
-    //.then(res => res.json())
-    //.then(function(res) {
-        //document.getElementById('results').innerHTML = res.message
-    //})
+    
 }
 
 export { handleSubmit }
