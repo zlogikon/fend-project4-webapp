@@ -1,7 +1,9 @@
 function handleSubmit(event) {
     event.preventDefault()
 
-    document.getElementById('results').innerHTML = ""
+    document.getElementById('server_message').innerHTML = ""
+    document.getElementById('URL').innerHTML = ""
+
 
     // check what text was put into the form field
     let formText = document.getElementById('name').value
@@ -11,7 +13,7 @@ function handleSubmit(event) {
 
     if (Client.checkURL(formText) == false) {
         console.log('Not a URL')
-        URLResult.innerHTML = 'Input is NOT a valid URL.'
+        URLResult.innerHTML = 'Input is NOT a valid URL'
         return
     } else {
         console.log('URL is correct')
@@ -26,7 +28,9 @@ function handleSubmit(event) {
         return res.json()
     })
     .then(function(data) {
-        document.getElementById('results').innerHTML = data.message
+        document.getElementById('server_message').innerHTML = data.message
+        document.getElementById('URL').innerHTML = formText
+
     })
     
     

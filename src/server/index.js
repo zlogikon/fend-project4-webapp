@@ -12,7 +12,6 @@ const bodyParser = require('body-parser')
 
 const app = express()
 
-const port = 8081
 
 app.use(bodyParser.text())
 app.use(cors())
@@ -27,15 +26,18 @@ TestURL = 'https://www.foxnews.com/politics/giuliani-presses-trump-election-chal
 
 const resURL= URLBase + apiKey + URLLang +  TestURL
 
-
-app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
-})
-
 // designates what port the app will listen to for incoming requests
+
+const port = 8081
+
 app.listen(port, function () {
     console.log(`Example app listening on port ${port}!`)
+})
+
+//post and get commands
+
+app.get('/', function (req, res) {
+    res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
 app.get('/test', function (req, res) {

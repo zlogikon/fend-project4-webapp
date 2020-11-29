@@ -1,6 +1,6 @@
 let json = {
     'title': 'test json response',
-    'message': 'This is a new message. Good for you!',
+    'message': 'This is a message from the server. Good for you!',
     'time': 'now'
 }
 
