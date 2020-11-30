@@ -1,4 +1,5 @@
 $font-color: rgb(180, 1, 1);
+$server-color: rgb(112, 112, 112);
 
 main {
     flex: 2;
@@ -14,4 +15,8 @@ p {
     margin: 25px auto;
     display: grid;
     grid-template-rows: 100px 100px 500px 200px;
+}
+
+#server_message {
+    color: $server-color; 
 }

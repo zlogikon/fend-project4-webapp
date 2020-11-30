@@ -24,7 +24,7 @@ URLBase = 'https://api.meaningcloud.com/sentiment-2.1?key='
 URLLang = '&lang=auto&url='
 TestURL = 'https://www.foxnews.com/politics/giuliani-presses-trump-election-challenge-case-in-fiery-news-conference'
 
-const resURL= URLBase + apiKey + URLLang +  TestURL
+
 
 // designates what port the app will listen to for incoming requests
 
@@ -43,3 +43,31 @@ app.get('/', function (req, res) {
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
+
+app.get('/nlp', function (req, res) {
+    console.log(`Request is working`)
+    const resURL= URLBase + apiKey + URLLang + TestURL
+    console.log(resURL)
+})
+
+
+
+
+/*async function callAPI(req, res) {
+    console.log(`Request is ${req.body}`)
+    const url = URL_ROOT + URL_KEY + URL_LANG + URL_USER_INPUT + req.body
+    console.log(url)
+    const response = await fetch(url)
+
+    try {
+        const nlpData = await response.json()
+        if (nlpData.status.code == 0) {
+            nlpData.message = "Good data received from API"
+            res.send(nlpData)
+        } else {
+            res.send({ message: "API call didn't work" })
+        }
+    } catch (error) {
+        console.error(error)
+    }
+}*/
