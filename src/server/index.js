@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const apiKey = process.env.API_KEY
 
+let projectData = {};
 
 const path = require('path')
 const express = require('express')
@@ -22,7 +23,6 @@ app.use(express.static('../client/index.html'))
 
 URLBase = 'https://api.meaningcloud.com/sentiment-2.1?key='
 URLLang = '&lang=auto&url='
-TestURL = 'https://www.foxnews.com/politics/giuliani-presses-trump-election-challenge-case-in-fiery-news-conference'
 
 
 
@@ -31,7 +31,7 @@ TestURL = 'https://www.foxnews.com/politics/giuliani-presses-trump-election-chal
 const port = 8081
 
 app.listen(port, function () {
-    console.log(`Example app listening on port ${port}!`)
+    console.log(`Server is running on localhost:${port}`)
 })
 
 //post and get commands
@@ -44,30 +44,40 @@ app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
 
-app.get('/nlp', function (req, res) {
-    console.log(`Request is working`)
-    const resURL= URLBase + apiKey + URLLang + TestURL
-    console.log(resURL)
-})
+app.get('/all', sendUserData)
+
+function sendUserData (req, res) {
+  res.send(projectData);
+  //console.log(projectData);
+};
+
+app.post('/add', addUserData)
+
+async function addUserData (req, res) {
+  console.log(`Post received`)
+  projectData = req.body.url;
+  console.log(`Request is ${projectData}`)
+
+  //const testURL = await projectData.json()
+  url = URLBase + apiKey + URLLang + projectData
+  const owAPI = await fetch(url)
+  console.log(url)
 
 
+  /*try {
+    const nlpData = await owAPI.json()
+    if (nlpData.status.code == 0) {
+        //nlpData.message = "Good data received from API"
+        res.send(nlpData)
+        console.log('API is working')
+        console.log(nlpData)
+    } else {
+        //res.send({ message: "API call didn't work" })
+        console.log('API Failed')
 
-
-/*async function callAPI(req, res) {
-    console.log(`Request is ${req.body}`)
-    const url = URL_ROOT + URL_KEY + URL_LANG + URL_USER_INPUT + req.body
-    console.log(url)
-    const response = await fetch(url)
-
-    try {
-        const nlpData = await response.json()
-        if (nlpData.status.code == 0) {
-            nlpData.message = "Good data received from API"
-            res.send(nlpData)
-        } else {
-            res.send({ message: "API call didn't work" })
-        }
-    } catch (error) {
-        console.error(error)
     }
-}*/
+  } catch (error) {
+    console.error(error)
+  }*/
+
+};
