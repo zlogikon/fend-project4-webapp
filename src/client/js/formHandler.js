@@ -1,7 +1,3 @@
-const fetch = require('node-fetch')
-
-let formText = ''
-
 async function handleSubmit(event) {
     event.preventDefault()
 
@@ -10,17 +6,19 @@ async function handleSubmit(event) {
     document.getElementById('subj').innerHTML = ""
 
     // retrieve text from html form
-    formText = document.getElementById('name').value
+    const formText = document.getElementById('name').value
     const URLResult = document.getElementById('URLResult')
       
     // check URL
     if (Client.checkURL(formText) == false) {
         console.log('Not a URL')
         URLResult.innerHTML = 'Input is NOT a valid URL'
+        subj.innerHTML = "Please ensure that the URL is for a current webpage. It should begin with either http:// or https:// and contain no spaces."
         return
     } else {
-        console.log('URL is correct')
-        URLResult.innerHTML = "Input is a valid URL"
+        console.log('URL is valid')
+        URLResult.innerHTML = "VALID"
+        subj.innerHTML = "Processing...."
     }
 
     console.log("::: Form Submitted to server :::")
@@ -32,9 +30,9 @@ async function handleSubmit(event) {
 
 }
 
-const postData = async ( url, data)=>{
+const postData = async (url, data)=>{
   console.log('Data to server: ',data)
-    const response = await fetch(url, {
+    const post = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       credentials: 'same-origin', // include, *same-origin, omit
       headers: {
@@ -44,25 +42,25 @@ const postData = async ( url, data)=>{
     });
 
     try {
-      const newData = await response.json();
-      console.log('Data okay!',newData);
+      const newData = await post.json();
+      //console.log('Data okay!',newData);
       return newData
     }catch(error) {
-    console.log("error", error);
+    console.log("JSON confirmation error", error);
     // appropriately handle the error
     }
 }
-
-
     
 const updateUI = async () => {
   console.log('Ready to update UI')
   const request = await fetch ('http://localhost:8081/all')
   try{
       const allData = await request.json()
+      const conf = allData.confidence;
+      const subj = allData.subjectivity;
   
-  document.getElementById("conf").innerHTML = allData.confidence;
-  document.getElementById("subj").innerHTML = allData.subjectivity;
+  document.getElementById("conf").innerHTML = `Confidence: ${conf}`
+  document.getElementById("subj").innerHTML = `Subjectivity: ${subj}`;
   
   }catch(error){
       console.log("updateUI error", error)
