@@ -3,6 +3,7 @@ dotenv.config();
 const apiKey = process.env.API_KEY
 
 let projectData = {};
+let nlpData = '';
 
 const path = require('path')
 const express = require('express')
@@ -47,7 +48,7 @@ app.get('/test', function (req, res) {
 app.get('/all', sendUserData)
 
 function sendUserData (req, res) {
-  res.send(projectData);
+  res.send(nlpData);
   //console.log(projectData);
 };
 
@@ -55,22 +56,18 @@ app.post('/add', addUserData)
 
 async function addUserData (req, res) {
   console.log(`Post received`)
-  projectData = req.body.url;
+  projectData = req.body;
   console.log(`Request is ${projectData}`)
-
-  //const testURL = await projectData.json()
   url = URLBase + apiKey + URLLang + projectData
-  const owAPI = await fetch(url)
   console.log(url)
+  const nlp = await fetch(url)
 
-
-  /*try {
-    const nlpData = await owAPI.json()
+  try {
+    nlpData = await nlp.json()
     if (nlpData.status.code == 0) {
-        //nlpData.message = "Good data received from API"
-        res.send(nlpData)
         console.log('API is working')
         console.log(nlpData)
+        res.send(nlpData)
     } else {
         //res.send({ message: "API call didn't work" })
         console.log('API Failed')
@@ -78,6 +75,6 @@ async function addUserData (req, res) {
     }
   } catch (error) {
     console.error(error)
-  }*/
+  }
 
 };
