@@ -54,7 +54,7 @@ async function sendNLP (req, res) {
     nlpJSON = await nlp.json()
     if (nlpJSON.status.code == 0) {
         console.log('API is working')
-        console.log(nlpJSON)
+        //console.log(nlpJSON)
         res.send(nlpJSON)
     } else {
         //res.send({ message: "API call didn't work" })
