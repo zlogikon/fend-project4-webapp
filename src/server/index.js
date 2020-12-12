@@ -12,7 +12,7 @@ const app = express()
 
 app.use(bodyParser.text())
 app.use(cors())
-app.use(express.static('../client/index.html'))
+app.use(express.static('dist'))
 
 let nlpJSON = '';
 const URLBase = 'https://api.meaningcloud.com/sentiment-2.1?key='
@@ -27,7 +27,7 @@ app.listen(port, function () {
 //post and get commands
 
 app.get('/', function (req, res) {
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile(path.resolve('dist/index.html'))
 })
 
 app.get('/test', function (req, res) {
