@@ -2,44 +2,53 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Test</title>
-        <link rel="stylesheet" type="text/css" href="/styles/base.scss">
+        <title>Sentiment Analysis Web App</title>
+        
         
 
 
     </head>
 
     <body>
-        <div class="container"
+        <div class="container">
 
-            <header>
-                <div>
-                    <p>Logo</p>
-                </div>
-                <div>
-                    <p>navigation</p>
-                </div>
+            <header id="header">
+                <h1>Sentiment Analysis Web App</h1>
+                <ul id='nav'>
+                    <li>Link1</li>
+                    <li>Link2</li>
+                    <li>Link3</li>
+                </ul>
             </header>
 
-            <main>
-                <section>
-                    <form class="" onsubmit="return handleSubmit(event)">
-                        <input id="name" type="text" name="input" value="" placeholder="Name">
-                        <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
-                    </form>
-                <section>
+            
 
-                <section>
-                    <h2>URL Check: <span id="URLResult"></span></span></h2>
+            <main>
+                <h2>Instructions</h2>
+                <p>Enter the address for an online article in the field below and click on the submit button.</p>
+                <p>This tool will use natural language process to determine the tone and positivity levels of the writing sample.</p>
+                <p>Analysis will include a confidence level. This score reflects the confidence in the accuracy of the results.</p>
+                <div id='form'>
+                    <form class="" onsubmit="return handleSubmit(event)">
+                        <input id="name" type="text" name="input" value="" placeholder="URL">
+                        <input id="button" type="submit" name="" value="Submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+                    </form>
+                
+
+                
+                    <h2 id="URLResult"></h2>
                     <h2 id="subj"></h2>
                     <h2 id="conf"></h2>
-                    
-
-                </section>
+                </div>
             </main>
 
-            <footer>
-                <p>This is a footer!!</p>
+            <footer id="footer">
+                <p>Created by zlogikon</p>
+                <p>This project is part of Udacity's Front End Developer Nanodegree</p>
+                <p>Natural Language Processing achieved using <a href='https://www.meaningcloud.com/products/sentiment-analysis' target="_blank">MeaningCloud's Sentiment Analysis</a></p>
+                
+                
+                
             </footer>
         </div>
     </body>
