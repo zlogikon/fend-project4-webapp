@@ -1,0 +1,26 @@
+$title-color: rgb(44, 41, 87);
+$nav-color:  rgb(70, 70, 70);
+
+
+header {
+    h1 {
+        display: flex;
+        justify-content: space-evenly;
+        font-size: 50px;
+        color: $title-color;
+        margin: 20px;
+    }
+    
+    #nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        font-size: 30px;
+        list-style-type: none;
+        margin-left: 0;
+        padding-left: 0 ;
+        color: $nav-color;
+        
+    }
+}
+
