@@ -1,22 +1,11 @@
-$font-color: rgb(180, 1, 1);
-$server-color: rgb(112, 112, 112);
-
-main {
-    flex: 2;
-}
-
-p {
-    font-size: 30px;
-    color: $font-color;
+body {
+    background-color: rgb(185, 185, 185);
 }
 
 .container {
     width: 50%;
-    margin: 25px auto;
+    margin: 0px auto;
     display: grid;
-    grid-template-rows: 100px 100px 500px 200px;
-}
-
-#server_message {
-    color: $server-color; 
+    grid-template-rows: auto auto auto;
+    background-color: white;
 }
