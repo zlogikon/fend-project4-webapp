@@ -1,11 +1,11 @@
 export function scoreUpdate (score) {
     
     if (score === "P" || score === "P+"){
-      return "Positive";
+      return "POSITIVE";
     } else if (score === "N" || score === "N+"){
-      return "Negative";
+      return "NEGATIVE";
     } else if (score === "NEU") {
-      return "Neutral";
+      return "NEUTRAL";
     } else {
       return "Non Sentimental";
     }
