@@ -7,6 +7,6 @@ export function scoreUpdate (score) {
     } else if (score === "NEU") {
       return "NEUTRAL";
     } else {
-      return "Non Sentimental";
+      return "undefined";
     }
   }
