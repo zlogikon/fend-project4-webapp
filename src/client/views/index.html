@@ -3,10 +3,6 @@
     <head>
         <meta charset="utf-8">
         <title>Sentiment Analysis Web App</title>
-        
-        
-
-
     </head>
 
     <body>
@@ -20,26 +16,23 @@
                     <li>Link3</li>
                 </ul>
             </header>
-
             
-
             <main>
                 <h2>Instructions</h2>
                 <p>Enter the address for an online article in the field below and click on the submit button.</p>
-                <p>This tool will use natural language process to determine the tone and positivity levels of the writing sample.</p>
+                <p>This tool will use natural language process to determine whether an article is objective or if it includes subjective elements.</p>
+                <p>A polarity score will be assigned depending on whether a there is a positive, neutral, or negative tone in the article.</p>
                 <p>Analysis will include a confidence level. This score reflects the confidence in the accuracy of the results.</p>
                 <div id='form'>
                     <form class="" onsubmit="return handleSubmit(event)">
                         <input id="name" type="text" name="input" value="" placeholder="URL">
                         <input id="button" type="submit" name="" value="Submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
                     </form>
-                
-
-                
+                    
                     <h2 id="URLResult"></h2>
                     <h2 id="subj"></h2>
-                    <h2 id="conf"></h2>
                     <h2 id="score"></h2>
+                    <h2 id="conf"></h2>
                 </div>
             </main>
 
