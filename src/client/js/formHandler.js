@@ -1,5 +1,3 @@
-let score = "";
-
 async function handleSubmit(event) {
     event.preventDefault()
 
@@ -49,8 +47,8 @@ const postData = async (url, data)=>{
       //console.log('Data okay!',newData);
       return newData
     }catch(error) {
-    console.log("JSON confirmation error", error);
-    // appropriately handle the error
+      console.log("JSON confirmation error", error);
+      URLResult.innerHTML = "Please confirm the URL is a working webpage"
     }
 }
     
@@ -60,27 +58,20 @@ const updateUI = async () => {
   
   try{
       const allData = await request.json()
+      
       const conf = allData.confidence;
       const subj = allData.subjectivity;
-      score = allData.score_tag;
+      const score = allData.score_tag;
       //console.log(allData)
        
       document.getElementById("conf").innerHTML = `Confidence: ${conf}`
       document.getElementById("subj").innerHTML = `Subjectivity: ${subj}`;
-      document.getElementById("score").innerHTML = `Score: ${Client.scoreUpdate(score)}`;
+      document.getElementById("score").innerHTML = `Polarity Score: ${Client.scoreUpdate(score)}`;
       
     }catch(error){
       console.log("updateUI error", error)
-  }
-
-  
+  } 
 }
-
-
-
-
-
-
 export { handleSubmit }
 export { postData }
 export { updateUI }
