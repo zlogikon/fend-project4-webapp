@@ -1,9 +1,12 @@
+let score = "";
+
 async function handleSubmit(event) {
     event.preventDefault()
 
     // reset html on form 
     document.getElementById('conf').innerHTML = ""
     document.getElementById('subj').innerHTML = ""
+    document.getElementById('score').innerHTML = ""
 
     // retrieve text from html form
     const formText = document.getElementById('name').value
@@ -12,12 +15,12 @@ async function handleSubmit(event) {
     // check URL
     if (Client.checkURL(formText) == false) {
         console.log('Not a URL')
-        URLResult.innerHTML = 'Input is NOT a valid URL'
+        URLResult.innerHTML = 'URL is not valid'
         subj.innerHTML = "Please ensure that the URL is for a current webpage. It should begin with either http:// or https:// and contain no spaces."
         return
     } else {
         console.log('URL is valid')
-        URLResult.innerHTML = "VALID"
+        URLResult.innerHTML = "URL is valid"
         subj.innerHTML = "Processing...."
     }
 
@@ -54,18 +57,31 @@ const postData = async (url, data)=>{
 const updateUI = async () => {
   console.log('Ready to update UI')
   const request = await fetch ('http://localhost:8081/all')
+  
   try{
       const allData = await request.json()
       const conf = allData.confidence;
       const subj = allData.subjectivity;
-  
-  document.getElementById("conf").innerHTML = `Confidence: ${conf}`
-  document.getElementById("subj").innerHTML = `Subjectivity: ${subj}`;
-  
-  }catch(error){
+      score = allData.score_tag;
+      //console.log(allData)
+       
+      document.getElementById("conf").innerHTML = `Confidence: ${conf}`
+      document.getElementById("subj").innerHTML = `Subjectivity: ${subj}`;
+      document.getElementById("score").innerHTML = `Score: ${Client.scoreUpdate(score)}`;
+      
+    }catch(error){
       console.log("updateUI error", error)
   }
+
+  
 }
+
+
+
+
+
+
 export { handleSubmit }
 export { postData }
 export { updateUI }
+
