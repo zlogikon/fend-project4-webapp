@@ -11,7 +11,7 @@ describe("Testing the URLChecker functionality", () => {
     })
     test("Testing the checkURL() function", () => {
         const url = 'www.google.com'
-        expect(checkURL(url)).toBe(true);
+        expect(checkURL(url)).toBe(false);
     })
 });
 
