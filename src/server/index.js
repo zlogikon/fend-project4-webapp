@@ -59,6 +59,7 @@ async function sendNLP (req, res) {
     } else {
         //res.send({ message: "API call didn't work" })
         console.log('API Failed')
+        res.send('no data at url')
 
     }
   } catch (error) {
